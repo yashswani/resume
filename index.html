@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yashswani Soni - Resume</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg-body: #f1f5f9;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --primary: #2563eb;
+      --border-color: #cbd5e1;
+      --section-heading: #1e293b;
+      --chip-bg: #f8fafc;
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    [data-theme="dark"] {
+      --bg-body: #0f172a;
+      --bg-card: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #60a5fa;
+      --border-color: #334155;
+      --section-heading: #f1f5f9;
+      --chip-bg: #0f172a;
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 20px 10px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Action Controls Bar */
+    .controls {
+      max-width: 850px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-card);
+      color: var(--text-main);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Resume Container (A4 layout styled) */
+    .resume-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background-color: var(--bg-card);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: background-color 0.3s ease;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .name {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      font-size: 14px;
+    }
+
+    .social-links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: 4px;
+    }
+
+    .contact-info {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .contact-info span i {
+      margin-right: 5px;
+      color: var(--primary);
+    }
+
+    /* Section Styles */
+    section {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--section-heading);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 13.5px;
+      color: var(--text-main);
+      text-align: justify;
+    }
+
+    /* Lists */
+    ul {
+      list-style-type: disc;
+      margin-left: 18px;
+      font-size: 13.5px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    /* Technical Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      row-gap: 6px;
+      font-size: 13.5px;
+    }
+
+    .skill-category {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .skill-list {
+      color: var(--text-muted);
+    }
+
+    /* Experience & Projects */
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .item-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .item-tech {
+      font-size: 12.5px;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .item-subtitle {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .item-date {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .project-item, .exp-item {
+      margin-bottom: 14px;
+    }
+
+    .project-item:last-child, .exp-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Key-Value details (Education, Languages, etc.) */
+    .simple-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .simple-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      .resume-container {
+        padding: 20px;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+        row-gap: 2px;
+        margin-bottom: 8px;
+      }
+      .item-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .simple-item {
+        flex-direction: column;
+      }
+    }
+
+    /* PDF Print Stylesheet */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 0;
+      }
+      .controls {
+        display: none !important;
+      }
+      .resume-container {
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        background-color: #ffffff !important;
+      }
+      * {
+        color: #000000 !important;
+        border-color: #cbd5e1 !important;
+      }
+      .subtitle, .item-tech, .contact-info span i, .social-links a {
+        color: #1e40af !important;
+      }
+      a {
+        text-decoration: none !important;
+      }
+      @page {
+        margin: 12mm 15mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Controls -->
+  <div class="controls">
+    <button class="btn" id="themeToggle">
+      <i class="fa-solid fa-moon"></i> Dark Mode
+    </button>
+    <button class="btn" onclick="window.print()">
+      <i class="fa-solid fa-download"></i> Download PDF
+    </button>
+  </div>
+
+  <!-- Resume Main Content -->
+  <main class="resume-container">
+    
+    <!-- Header -->
+    <header>
+      <div class="header-top">
+        <h1 class="name">Yashswani Soni</h1>
+        <div class="social-links">
+          <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://leetcode.com" target="_blank"><i class="fa-solid fa-code"></i> LeetCode</a>
+        </div>
+      </div>
+      <div class="subtitle">
+        Full-Stack & Real-Time Systems Developer | React.js • Node.js | Express.js • PostgreSQL • Socket.io
+      </div>
+      <div class="contact-info">
+        <span><i class="fa-solid fa-phone"></i> +91 70554 65617</span>
+        <span><i class="fa-solid fa-envelope"></i> yashswanisoni@gmail.com</span>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section>
+      <h2 class="section-title">Professional Summary</h2>
+      <p>
+        B.Tech Computer Science student at VIT Bhopal University with hands-on experience building full-stack, real-time, multiplayer, and AI-integrated applications using React.js, Node.js, Express.js, PostgreSQL, Redis, Socket.io, OpenAI API, and Google Gemini API. Skilled in REST APIs, WebSockets, authentication, transactional workflows, database design, and CRUD systems, with a strong foundation in C++ and Data Structures & Algorithms.
+      </p>
+    </section>
+
+    <!-- Technical Skills -->
+    <section>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">Languages</div>
+        <div class="skill-list">: C++, Python, JavaScript, Data Structures & Algorithms</div>
+
+        <div class="skill-category">Frontend</div>
+        <div class="skill-list">: React.js, HTML5, CSS3, EJS, Tailwind CSS, Bootstrap, Recharts</div>
+
+        <div class="skill-category">Backend</div>
+        <div class="skill-list">: Node.js, Express.js, REST APIs, Socket.io, WebSockets, Axios</div>
+
+        <div class="skill-category">Databases</div>
+        <div class="skill-list">: PostgreSQL, SQL, Redis, Database Design, Transactions, CRUD</div>
+
+        <div class="skill-category">AI & Auth</div>
+        <div class="skill-list">: OpenAI API, Google Gemini API, Passport.js, Google OAuth 2.0, bcrypt</div>
+
+        <div class="skill-category">Tools</div>
+        <div class="skill-list">: Git, GitHub, VS Code, DataGrip, npm, nodemon</div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section>
+      <h2 class="section-title">Projects</h2>
+
+      <!-- Project 1 -->
+      <div class="project-item">
+        <div class="item-header">
+          <span class="item-title">AI Seller Sathi</span>
+          <span class="item-tech">Node.js, Express.js, EJS, PostgreSQL, Google Gemini API</span>
+        </div>
+        <div class="item-subtitle">AI-Powered Seller Assistant</div>
+        <ul>
+          <li>Engineered an AI-powered assistant generating 5 content types (titles, descriptions, keywords, FAQs, social captions) across 3 languages – English, Hindi, and Hinglish – via the Google Gemini API</li>
+          <li>Added a PostgreSQL-backed CRUD dashboard for sellers to manage and edit around 50+ generated listings</li>
+          <li>Designed around 15+ prompt templates and API request logic to maintain tone and formatting consistency across all 3 supported languages</li>
+        </ul>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-item">
+        <div class="item-header">
+          <span class="item-title">NexusOS</span>
+          <span class="item-tech">React.js, Node.js, Express.js, Tailwind CSS, OpenAI API, PostgreSQL</span>
+        </div>
+        <div class="item-subtitle">AI-Powered Productivity & Task Management</div>
+        <ul>
+          <li>Developed a Kanban-based productivity workspace with Brain Dump notes, 6+ customizable themes, and productivity analytics</li>
+          <li>Integrated the OpenAI API to convert unstructured notes into categorized tasks, tracking completion rates across around 30+ tasks per board</li>
+          <li>Built a drag-and-drop task board supporting approx 8 configurable columns with real-time completion metrics</li>
+        </ul>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-item">
+        <div class="item-header">
+          <span class="item-title">SpellForge Tactics</span>
+          <span class="item-tech">Node.js, Express.js, PostgreSQL, Socket.io, EJS, Tailwind CSS</span>
+        </div>
+        <div class="item-subtitle">1v1 Elemental Card Warfare</div>
+        <ul>
+          <li>Engineered low-latency one-on-one (2-player) multiplayer battles with live matchmaking and server-authoritative card, mana, and shield logic</li>
+          <li>Optimized leaderboard retrieval using indexed PostgreSQL queries, supporting around 20 concurrent matches</li>
+          <li>Built a Socket.io-based real-time synchronization layer keeping matchmaking and battle state consistent across around 15 active sessions</li>
+        </ul>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-item">
+        <div class="item-header">
+          <span class="item-title">Apex Exchange</span>
+          <span class="item-tech">React.js, Node.js, Express.js, PostgreSQL, Redis, Socket.io, Recharts</span>
+        </div>
+        <div class="item-subtitle">Galactic Commodity Market Simulator</div>
+        <ul>
+          <li>Architected a real-time market simulator with stochastic pricing and WebSocket feeds powering live interactive Recharts visualizations across 4+ market metrics</li>
+          <li>Implemented Redis Sorted Sets for O(log N) net-worth rankings and transactional row-level locking for atomic buy/short trades among around 18+ active traders</li>
+          <li>Modeled stochastic price fluctuations updating around 12 tradable commodity assets in real time</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section>
+      <h2 class="section-title">Experience</h2>
+
+      <div class="exp-item">
+        <div class="item-header">
+          <span class="item-title">Data Analyst Associate Intern | Excelerate</span>
+          <span class="item-date">Jul 2025 – Aug 2025 | Remote</span>
+        </div>
+        <ul>
+          <li>Cleaned and restructured data across around 5+ source tables using PostgreSQL queries to prepare it for analysis</li>
+          <li>Created approx 4+ interactive Power BI dashboards to surface actionable trends from the cleaned data</li>
+          <li>Translated findings into structured stakeholder reports over the 4-week internship period</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="item-header">
+          <span class="item-title">PR and Outreach Member | Software Development Club, VIT Bhopal</span>
+          <span class="item-date">Dec 2024 – Sep 2025 | India</span>
+        </div>
+        <ul>
+          <li>Supported outreach and communication for club-run software development initiatives across around 6+ technical events</li>
+          <li>Coordinated logistics for around 10+ workshops alongside the core team</li>
+          <li>Contributed to planning and execution of club events, helping engage around 100+ members</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section>
+      <h2 class="section-title">Education</h2>
+      <div class="simple-item">
+        <div><strong>VIT Bhopal University</strong> – B.Tech in Computer Science</div>
+        <div class="item-date">Aug 2023 – May 2027</div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section>
+      <h2 class="section-title">Certifications</h2>
+      <ul>
+        <li><strong>Google:</strong> The Bits and Bytes of Computer Networking (Aug 2025)</li>
+        <li><strong>Microsoft & LinkedIn:</strong> Career Skills in Software Development (May 2025)</li>
+        <li><strong>NPTEL:</strong> Introduction to Machine Learning (May 2025), Marketing Analytics (May 2026)</li>
+        <li><strong>freeCodeCamp:</strong> Responsive Web Design (Feb 2026)</li>
+      </ul>
+    </section>
+
+    <!-- Achievements & Languages -->
+    <section>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+          <h2 class="section-title">Achievements</h2>
+          <p><strong>LeetCode Knight</strong></p>
+        </div>
+        <div>
+          <h2 class="section-title">Languages</h2>
+          <p><strong>English:</strong> Proficient &nbsp;|&nbsp; <strong>Hindi:</strong> Native</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Theme Switch Logic
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme === 'dark' || (!currentTheme && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
+      }
+    });
+  </script>
+</body>
+</html>
